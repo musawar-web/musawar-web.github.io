@@ -1507,4 +1507,135 @@ textarea {
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+/* =========================
+   VISIBLE PAGE ANIMATIONS
+========================= */
 
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(55px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .section-block,
+  .clients-section,
+  .contact-section {
+    animation: sectionReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+}
+
+/* HERO */
+.hero-content {
+  animation: heroTextIn .8s ease both;
+}
+
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateX(-45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-image-card {
+  animation: imageFloat 4s ease-in-out infinite;
+}
+
+@keyframes imageFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* BUTTONS */
+.primary-button,
+.nav-contact,
+.contact-form button {
+  animation: buttonGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes buttonGlow {
+  from {
+    box-shadow: 0 8px 20px rgba(85,119,255,.15);
+  }
+  to {
+    box-shadow: 0 10px 35px rgba(131,103,255,.45);
+  }
+}
+
+/* SKILLS */
+.skill-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(126,160,255,.55);
+}
+
+/* PROJECTS */
+.professional-project-card:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+.professional-logo-area img {
+  animation: projectFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes projectFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* BRANDS */
+.clients-marquee-track {
+  animation: clientsMove 18s linear infinite !important;
+}
+
+.client-logo-item:hover {
+  transform: translateY(-8px) scale(1.06);
+}
+
+/* EXPERIENCE */
+.experience-row {
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    padding-left .3s ease;
+}
+
+.experience-row:hover {
+  transform: translateX(12px);
+  padding-left: 12px;
+  background: rgba(85,119,255,.035);
+}
+
+/* NAVBAR */
+.navbar {
+  animation: navDrop .7s ease both;
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
