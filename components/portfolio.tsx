@@ -54,21 +54,24 @@ const projects = [
     type: "Shopify Development",
     description:
       "Custom Shopify development including sections, product layouts and interactive functionality.",
-    image: `${base}/projects/saltite.png`,
+    image: `${base}/projects/saltite-site.png`,
+    link: "https://saltite.com/",
   },
   {
     title: "Skylite",
     type: "Website Development",
     description:
       "Responsive website development with a clean and professional visual experience.",
-    image: `${base}/projects/skylite.png`,
+    image: `${base}/projects/skylite-site.png`,
+    link: "#",
   },
   {
     title: "NutriSalt",
     type: "Shopify Development",
     description:
       "Shopify website development with improved structure, product presentation and responsive design.",
-    image: `${base}/projects/nutrisalt.png`,
+    image: `${base}/projects/nutrisalt-site.png`,
+    link: "https://nutrisalt.us/",
   },
 ];
 
@@ -349,8 +352,11 @@ export default function Portfolio() {
 
         <div className="professional-projects">
           {projects.map((project, index) => (
-            <motion.article
+            <motion.a
               key={project.title}
+              href={project.link}
+              target={project.link === "#" ? undefined : "_blank"}
+              rel={project.link === "#" ? undefined : "noreferrer"}
               className="professional-project-card"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -361,7 +367,7 @@ export default function Portfolio() {
               <div className="professional-logo-area">
                 <img
                   src={project.image}
-                  alt={`${project.title} logo`}
+                  alt={`${project.title} website preview`}
                 />
               </div>
 
@@ -370,7 +376,7 @@ export default function Portfolio() {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
       </section>
