@@ -37,12 +37,16 @@
   line-height: 1.7;
 }
 
+/* MARQUEE WRAPPER */
+
 .clients-marquee {
   position: relative;
   width: 100%;
   overflow: hidden;
   padding: 8px 0;
 }
+
+/* LEFT / RIGHT FADE */
 
 .clients-marquee::before,
 .clients-marquee::after {
@@ -60,7 +64,7 @@
   background: linear-gradient(
     90deg,
     var(--bg) 0%,
-    rgba(7, 9, 14, 0.9) 35%,
+    rgba(7, 9, 14, 0.92) 35%,
     transparent 100%
   );
 }
@@ -70,37 +74,45 @@
   background: linear-gradient(
     -90deg,
     var(--bg) 0%,
-    rgba(7, 9, 14, 0.9) 35%,
+    rgba(7, 9, 14, 0.92) 35%,
     transparent 100%
   );
 }
 
+/* MOVING TRACK */
+
 .clients-marquee-track {
   width: max-content;
+
   display: flex;
   align-items: center;
+
   gap: 22px;
+
   animation: clientLogoScroll 26s linear infinite;
+
+  will-change: transform;
 }
 
 .clients-marquee:hover .clients-marquee-track {
   animation-play-state: paused;
 }
 
+/* INDIVIDUAL LOGO CARD */
+
 .client-logo-card {
   flex: 0 0 300px;
+
+  width: 300px;
   height: 150px;
+
   padding: 26px 30px;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.035),
-      rgba(255, 255, 255, 0.012)
-    );
+  /* WHITE BACKGROUND */
+  background: #ffffff;
 
   display: flex;
   align-items: center;
@@ -109,67 +121,90 @@
   position: relative;
   overflow: hidden;
 
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.16);
+
   transition:
     transform 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
+
+/* SUBTLE BLUE GLOW */
 
 .client-logo-card::before {
   content: "";
+
   position: absolute;
-  inset: auto 15% -45% 15%;
+
+  left: 15%;
+  right: 15%;
+  bottom: -55px;
+
   height: 80px;
+
   background: radial-gradient(
     circle,
-    rgba(90, 116, 255, 0.18),
+    rgba(85, 119, 255, 0.16),
     transparent 70%
   );
-  filter: blur(20px);
+
+  filter: blur(22px);
+
   opacity: 0;
+
   transition: opacity 0.3s ease;
 }
 
+/* CARD HOVER */
+
 .client-logo-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(104, 130, 255, 0.28);
-  background: rgba(85, 119, 255, 0.045);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+  transform: translateY(-6px);
+
+  border-color: rgba(100, 125, 255, 0.35);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.24),
+    0 8px 30px rgba(85, 119, 255, 0.08);
 }
 
 .client-logo-card:hover::before {
   opacity: 1;
 }
 
+/* LOGO IMAGE */
+
 .client-logo-card img {
   position: relative;
   z-index: 2;
 
+  display: block;
+
   width: auto;
-  max-width: 190px;
   height: 72px;
+
+  max-width: 190px;
 
   object-fit: contain;
   object-position: center;
 
-  display: block;
-
-  filter: saturate(0.9) brightness(1.05);
+  filter: none;
 
   transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
+    transform 0.3s ease;
 }
 
 .client-logo-card:hover img {
-  transform: scale(1.05);
-  filter: saturate(1) brightness(1.15);
+  transform: scale(1.06);
 }
+
+/* HIDE TEXT UNDER LOGO */
 
 .client-logo-card span {
   display: none;
 }
+
+/* CONTINUOUS MOVEMENT */
 
 @keyframes clientLogoScroll {
   from {
@@ -181,14 +216,65 @@
   }
 }
 
+/* TABLET */
+
+@media (max-width: 950px) {
+  .clients-section {
+    padding: 100px 0 120px;
+  }
+
+  .clients-marquee::before,
+  .clients-marquee::after {
+    width: 75px;
+  }
+
+  .client-logo-card {
+    flex-basis: 260px;
+
+    width: 260px;
+    height: 140px;
+
+    padding: 24px;
+  }
+
+  .client-logo-card img {
+    max-width: 170px;
+    height: 66px;
+  }
+
+  @keyframes clientLogoScroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-846px);
+    }
+  }
+}
+
+/* MOBILE */
+
 @media (max-width: 760px) {
   .clients-section {
     padding: 90px 0 105px;
   }
 
+  .clients-heading {
+    margin-bottom: 38px;
+  }
+
+  .clients-heading h2 {
+    font-size: clamp(38px, 11vw, 56px);
+  }
+
+  .clients-description {
+    font-size: 13px;
+  }
+
   .clients-marquee::before,
   .clients-marquee::after {
-    width: 45px;
+    width: 42px;
   }
 
   .clients-marquee-track {
@@ -197,8 +283,13 @@
 
   .client-logo-card {
     flex-basis: 230px;
+
+    width: 230px;
     height: 125px;
+
     padding: 22px;
+
+    border-radius: 16px;
   }
 
   .client-logo-card img {
