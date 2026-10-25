@@ -760,6 +760,8 @@ textarea {
 }
 
 .professional-project-card {
+  display: block;
+  cursor: pointer;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -778,34 +780,25 @@ textarea {
 
 .professional-logo-area {
   position: relative;
-  height: 270px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 250px;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
-  background:
-    radial-gradient(circle at center, rgba(85, 119, 255, 0.10), transparent 58%),
-    rgba(255, 255, 255, 0.012);
+  background: #0c1018;
 }
 
 .professional-logo-area::before {
-  content: "";
-  position: absolute;
-  width: 190px;
-  height: 190px;
-  border: 1px solid rgba(126, 160, 255, 0.10);
-  border-radius: 50%;
+  display: none;
 }
 
 .professional-logo-area img {
-  position: relative;
-  z-index: 2;
-  width: 62%;
-  max-width: 210px;
-  max-height: 110px;
-  object-fit: contain;
-  transition: transform 0.35s ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.45s ease;
 }
 
 .professional-project-card:hover .professional-logo-area img {
@@ -1502,7 +1495,7 @@ textarea {
   box-shadow:0 14px 35px rgba(85,119,255,.24)
 }
 
-.professional-logo-area img{animation:logoFloat 5s ease-in-out infinite}
+.professional-logo-area img{animation:none}
 @keyframes logoFloat{50%{transform:translateY(-6px)}}
 
 @media (prefers-reduced-motion:reduce){
@@ -1590,7 +1583,7 @@ textarea {
 }
 
 .professional-logo-area img {
-  animation: projectFloat 3.5s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes projectFloat {
