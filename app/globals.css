@@ -1472,3 +1472,39 @@ textarea {
     text-align: left;
   }
 }
+
+/* SHORT PREMIUM ANIMATIONS */
+.navbar{animation:navIn .6s ease both}
+@keyframes navIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+
+.glow-one{animation:glowA 9s ease-in-out infinite alternate}
+.glow-two{animation:glowB 12s ease-in-out infinite alternate}
+@keyframes glowA{to{transform:translate(-70px,55px) scale(1.08)}}
+@keyframes glowB{to{transform:translate(80px,-50px) scale(1.1)}}
+
+.hero-image-wrapper{animation:heroFloat 5s ease-in-out infinite}
+@keyframes heroFloat{50%{transform:translateY(-8px)}}
+
+.brand-logo,.skill-card,.professional-project-card,.client-logo-item,.footer-social-link{
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease
+}
+.brand:hover .brand-logo{transform:scale(1.06) rotate(-2deg)}
+.skill-card:hover,.professional-project-card:hover{transform:translateY(-7px)}
+.client-logo-item:hover{transform:translateY(-5px) scale(1.03)}
+.footer-social-link:hover{transform:translateY(-3px)}
+
+.nav-contact,.primary-button,.contact-form button{
+  transition:transform .25s ease,box-shadow .25s ease
+}
+.nav-contact:hover,.primary-button:hover,.contact-form button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 35px rgba(85,119,255,.24)
+}
+
+.professional-logo-area img{animation:logoFloat 5s ease-in-out infinite}
+@keyframes logoFloat{50%{transform:translateY(-6px)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
