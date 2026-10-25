@@ -1,8 +1,6 @@
 "use client";
 
 export default function Navbar() {
-  const base = "/musawar.github.io";
-
   const links = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
@@ -16,7 +14,7 @@ export default function Navbar() {
       <div className="navbar">
         <a href="#home" className="brand">
           <img
-            src={`${base}/mk-logo.png`}
+            src="/mk-logo.png"
             alt="Musawar MK Logo"
             className="brand-logo"
           />
