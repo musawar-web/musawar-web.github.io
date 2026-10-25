@@ -1,77 +1,34 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Navbar() {
+  const links = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
+  ];
+
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
-        background: "rgba(8,12,9,0.86)",
-        backdropFilter: "blur(18px)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          minHeight: "78px",
-          padding: "0 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "24px",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+    <header className="site-header">
+      <div className="navbar">
+        <a href="#home" className="brand-logo" aria-label="Musawar home">
           <img
             src="/musawar.github.io/mk-logo.png"
-            alt="Musawar logo"
-            style={{
-              height: "44px",
-              width: "auto",
-            }}
+            alt="Musawar MK Logo"
           />
-        </Link>
+        </a>
 
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "26px",
-            flexWrap: "wrap",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Link href="/about">About</Link>
+        <nav className="nav-links">
+          {links.map((link) => (
+            <a key={link.label} href={link.href}>
+              {link.label}
+            </a>
+          ))}
 
-          <Link href="/skills">Skills</Link>
-
-          <Link href="/projects">Projects</Link>
-
-          <Link href="/experience">Experience</Link>
-
-          <Link
-            href="/contact"
-            style={{
-              padding: "12px 18px",
-              borderRadius: "999px",
-              background: "#bbf244",
-              color: "#080c09",
-              fontWeight: 800,
-            }}
-          >
+          <a href="#contact" className="nav-contact">
             Let&apos;s Talk
-          </Link>
+          </a>
         </nav>
       </div>
     </header>
