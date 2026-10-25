@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useRef } from "react";
+
+const base = "/musawar.github.io";
 
 const skills = [
   "Shopify",
@@ -17,362 +20,262 @@ const services = [
   {
     number: "01",
     title: "Shopify Development",
-    text: "Custom Shopify storefront development with clean structure, responsive layouts and custom functionality.",
+    text: "Custom Shopify storefronts, theme customization, product layouts and advanced Liquid sections.",
   },
   {
     number: "02",
-    title: "Custom Liquid Sections",
-    text: "Flexible Shopify sections built with Liquid that can be managed directly through theme settings.",
+    title: "WordPress Development",
+    text: "Professional WordPress websites, custom layouts, troubleshooting and website improvements.",
   },
   {
     number: "03",
-    title: "Website Redesign",
-    text: "Modern redesigns focused on stronger visual hierarchy, usability and a professional brand presence.",
+    title: "Custom Liquid Sections",
+    text: "Flexible Shopify sections that can be managed directly from the Shopify theme editor.",
   },
   {
     number: "04",
-    title: "WordPress Development",
-    text: "Custom WordPress development, page improvements, troubleshooting and website maintenance.",
+    title: "Website Development",
+    text: "Modern responsive websites with clean UI, structured layouts and strong visual presentation.",
   },
   {
     number: "05",
-    title: "Responsive Development",
-    text: "Interfaces carefully optimized for desktop, tablet and mobile screens.",
+    title: "Website Redesign",
+    text: "Improving existing websites with better layout, presentation, responsiveness and usability.",
   },
   {
     number: "06",
     title: "Bug Fixing",
-    text: "Frontend issues, layout problems, Shopify theme bugs and website functionality fixes.",
+    text: "Fixing Shopify, WordPress, frontend layout and functionality issues.",
   },
 ];
 
 const projects = [
   {
     title: "Saltite",
-    category: "Shopify Development",
+    type: "Shopify Development",
     description:
-      "Custom Shopify sections, product layouts, calculators, collection experiences and responsive storefront development.",
-    image: "/musawar.github.io/projects/saltite.png",
+      "Custom Shopify development including sections, product layouts and interactive functionality.",
+    image: `${base}/projects/saltite.png`,
   },
   {
     title: "Skylite",
-    category: "Website Development",
+    type: "Website Development",
     description:
-      "Professional website development focused on modern visual presentation, clean layouts and responsive interfaces.",
-    image: "/musawar.github.io/projects/skylite.png",
+      "Responsive website development with a clean and professional visual experience.",
+    image: `${base}/projects/skylite.png`,
   },
   {
     title: "NutriSalt",
-    category: "Shopify Website",
+    type: "Shopify Development",
     description:
-      "Shopify website work focused on a cleaner visual system, organized product presentation and a professional user experience.",
-    image: "/musawar.github.io/projects/nutrisalt.png",
+      "Shopify website development with improved structure, product presentation and responsive design.",
+    image: `${base}/projects/nutrisalt.png`,
   },
 ];
 
 const experience = [
   {
     title: "Shopify Developer",
-    type: "Current Focus",
-    text: "Building custom Shopify sections, product templates, collection experiences and theme functionality using Liquid, CSS and JavaScript.",
+    category: "Current Focus",
+    description:
+      "Working with Shopify Liquid, custom sections, product templates, responsive storefronts and theme functionality.",
   },
   {
-    title: "Website Development",
-    type: "Development",
-    text: "Creating professional responsive websites with clean layouts, structured components and modern frontend development practices.",
+    title: "WordPress Developer",
+    category: "Web Development",
+    description:
+      "Building, customizing and troubleshooting WordPress websites with responsive layouts and professional presentation.",
+  },
+  {
+    title: "Frontend Development",
+    category: "Development",
+    description:
+      "Creating responsive user interfaces with HTML, CSS and JavaScript.",
   },
   {
     title: "UI Development",
-    type: "Frontend",
-    text: "Developing interfaces designed to work smoothly across desktop, tablet and mobile devices.",
-  },
-  {
-    title: "WordPress Development",
-    type: "WordPress",
-    text: "Working with WordPress customization, troubleshooting, page improvements and website maintenance.",
+    category: "Interface",
+    description:
+      "Building clean and structured layouts designed to work across desktop, tablet and mobile devices.",
   },
 ];
 
-const reveal = {
-  hidden: {
-    opacity: 0,
-    y: 35,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
 export default function Portfolio() {
+  const projectScroller = useRef<HTMLDivElement>(null);
+
+  const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    if (!projectScroller.current) return;
+
+    projectScroller.current.scrollLeft += event.deltaY;
+  };
+
   return (
     <main className="portfolio">
       <div className="background-grid" />
-      <div className="aurora aurora-one" />
-      <div className="aurora aurora-two" />
+      <div className="blue-glow glow-one" />
+      <div className="blue-glow glow-two" />
 
       {/* HERO */}
+
       <section id="home" className="hero section-container">
         <motion.div
           className="hero-content"
-          initial="hidden"
-          animate="show"
-          variants={reveal}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65 }}
         >
-          <motion.div
-            className="availability"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            <span className="availability-dot" />
+          <div className="availability">
+            <span />
             Available for new projects
-          </motion.div>
+          </div>
 
           <h1>
-            Shopify &amp;
+            Shopify &
             <br />
-            <span>Web Developer.</span>
+            <em>Web Developer.</em>
           </h1>
 
           <p className="hero-description">
-            I&apos;m Musawar. I create modern Shopify stores, custom web
-            experiences and responsive interfaces built around clean design,
-            functionality and strong attention to detail.
+            I&apos;m Musawar, a Shopify, WordPress and frontend developer
+            building responsive, modern and professional websites with strong
+            attention to layout, functionality and user experience.
           </p>
 
           <div className="hero-actions">
             <a href="#projects" className="primary-button">
-              View My Work
+              View Projects
               <span>↗</span>
             </a>
 
             <a href="#contact" className="secondary-button">
-              Contact Me
+              Let&apos;s Talk
             </a>
           </div>
 
-          <div className="hero-mini-stats">
+          <div className="hero-stats">
             <div>
               <strong>Shopify</strong>
               <span>Development</span>
             </div>
 
             <div>
-              <strong>Frontend</strong>
+              <strong>WordPress</strong>
               <span>Development</span>
             </div>
 
             <div>
-              <strong>Responsive</strong>
-              <span>UI Design</span>
+              <strong>Frontend</strong>
+              <span>Responsive UI</span>
             </div>
           </div>
         </motion.div>
 
         <motion.div
-          className="hero-visual"
-          initial={{ opacity: 0, x: 60, scale: 0.96 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.15 }}
+          className="hero-image-wrapper"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.75 }}
         >
-          <div className="photo-glow" />
+          <div className="hero-image-glow" />
 
-          <div className="photo-frame">
+          <div className="hero-image-card">
             <img
-              src="/musawar.github.io/musawar.jpg"
-              alt="Musawar - Shopify and Web Developer"
-              className="profile-photo"
+              src={`${base}/musawar.jpg`}
+              alt="Musawar"
+              className="hero-image"
             />
 
-            <div className="photo-label">
-              <span>Musawar</span>
-              <small>Shopify &amp; Web Developer</small>
+            <div className="image-info">
+              <strong>Musawar</strong>
+              <span>Shopify & Web Developer</span>
             </div>
           </div>
-
-          <motion.div
-            className="floating-card floating-card-top"
-            animate={{
-              y: [0, -10, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <span>01</span>
-            Custom Shopify
-          </motion.div>
-
-          <motion.div
-            className="floating-card floating-card-bottom"
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <span>02</span>
-            Responsive UI
-          </motion.div>
         </motion.div>
-      </section>
-
-      {/* MARQUEE */}
-      <section className="marquee-section">
-        <div className="marquee-track">
-          <span>SHOPIFY</span>
-          <i>✦</i>
-          <span>LIQUID</span>
-          <i>✦</i>
-          <span>JAVASCRIPT</span>
-          <i>✦</i>
-          <span>WORDPRESS</span>
-          <i>✦</i>
-          <span>RESPONSIVE UI</span>
-          <i>✦</i>
-          <span>SHOPIFY</span>
-          <i>✦</i>
-          <span>LIQUID</span>
-          <i>✦</i>
-          <span>JAVASCRIPT</span>
-          <i>✦</i>
-        </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="content-section section-container">
-        <motion.div
-          className="section-heading"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={reveal}
-          transition={{ duration: 0.65 }}
-        >
-          <div className="section-eyebrow">
-            <span>01</span>
-            ABOUT
-          </div>
 
-          <h2>
-            Building digital experiences
-            <br />
-            <span>with purpose.</span>
-          </h2>
-        </motion.div>
+      <section id="about" className="section-block section-container">
+        <div className="section-label">
+          <span>01</span>
+          ABOUT
+        </div>
 
-        <div className="about-grid">
+        <div className="about-layout">
           <motion.div
-            className="about-intro"
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={reveal}
-            transition={{ duration: 0.65 }}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
-            <p className="large-copy">
-              I&apos;m Musawar, a Shopify and web developer focused on turning
-              ideas into clean, responsive and professional websites.
-            </p>
-
-            <p>
-              My work includes Shopify theme customization, custom Liquid
-              sections, frontend development, WordPress development,
-              responsive interfaces and website troubleshooting.
-            </p>
-
-            <p>
-              I focus on clarity, usability and polished presentation while
-              keeping websites practical and easy to manage.
-            </p>
-
-            <a href="#contact" className="text-link">
-              Work with me <span>↗</span>
-            </a>
+            <h2>
+              Creating clean and
+              <br />
+              <em>functional websites.</em>
+            </h2>
           </motion.div>
 
           <motion.div
-            className="about-panel"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7 }}
+            className="about-copy"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
-            <div className="about-panel-row">
-              <span>Primary Focus</span>
-              <strong>Shopify Development</strong>
-            </div>
+            <p className="about-main">
+              I&apos;m Musawar, a Shopify, WordPress and web developer focused
+              on building responsive and professional digital experiences.
+            </p>
 
-            <div className="about-panel-row">
-              <span>Development</span>
-              <strong>Frontend &amp; WordPress</strong>
-            </div>
+            <p>
+              My Shopify work includes custom Liquid sections, product pages,
+              collection layouts, theme customization and frontend
+              functionality.
+            </p>
 
-            <div className="about-panel-row">
-              <span>Approach</span>
-              <strong>Responsive &amp; Clean</strong>
-            </div>
+            <p>
+              I also work with WordPress, including website development,
+              customization, redesigns, troubleshooting and responsive layout
+              improvements.
+            </p>
 
-            <div className="about-panel-row">
-              <span>Speciality</span>
-              <strong>Custom Liquid Sections</strong>
-            </div>
+            <p>
+              My goal is to build websites that look professional, work
+              properly and remain easy to use across all screen sizes.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* SKILLS */}
-      <section id="skills" className="content-section section-container">
-        <motion.div
-          className="section-heading"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={reveal}
-          transition={{ duration: 0.65 }}
-        >
-          <div className="section-eyebrow">
-            <span>02</span>
-            SKILLS
-          </div>
 
+      <section id="skills" className="section-block section-container">
+        <div className="section-label">
+          <span>02</span>
+          SKILLS
+        </div>
+
+        <div className="section-heading-row">
           <h2>
-            Technologies &
+            Tools I use to
             <br />
-            <span>tools I work with.</span>
+            <em>build websites.</em>
           </h2>
-        </motion.div>
+
+          <p>
+            Technologies and platforms I regularly work with for Shopify,
+            WordPress and frontend development.
+          </p>
+        </div>
 
         <div className="skills-grid">
           {skills.map((skill, index) => (
             <motion.div
               className="skill-card"
               key={skill}
-              initial={{
-                opacity: 0,
-                y: 35,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.06,
-              }}
-              whileHover={{
-                y: -8,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.04 }}
+              whileHover={{ y: -6 }}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{skill}</strong>
@@ -382,237 +285,192 @@ export default function Portfolio() {
       </section>
 
       {/* SERVICES */}
-      <section className="content-section section-container">
-        <motion.div
-          className="section-heading"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          transition={{ duration: 0.65 }}
-        >
-          <div className="section-eyebrow">
-            <span>03</span>
-            SERVICES
-          </div>
 
+      <section className="section-block section-container">
+        <div className="section-label">
+          <span>03</span>
+          SERVICES
+        </div>
+
+        <div className="section-heading-row">
           <h2>
             What I can
             <br />
-            <span>help you build.</span>
+            <em>help you with.</em>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="services-list">
-          {services.map((service, index) => (
-            <motion.article
+          {services.map((service) => (
+            <motion.div
               key={service.title}
-              className="service-row"
-              initial={{
-                opacity: 0,
-                x: -30,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.55,
-                delay: index * 0.05,
-              }}
+              className="service-item"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
-              <span className="service-number">{service.number}</span>
+              <span>{service.number}</span>
 
               <h3>{service.title}</h3>
 
               <p>{service.text}</p>
 
-              <span className="service-arrow">↗</span>
-            </motion.article>
+              <b>↗</b>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="content-section section-container">
-        <motion.div
-          className="section-heading projects-heading"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          transition={{ duration: 0.65 }}
-        >
-          <div>
-            <div className="section-eyebrow">
-              <span>04</span>
-              PROJECTS
-            </div>
 
-            <h2>
-              Selected
-              <br />
-              <span>work.</span>
-            </h2>
+      <section id="projects" className="section-block projects-section">
+        <div className="section-container">
+          <div className="section-label">
+            <span>04</span>
+            PROJECTS
           </div>
 
-          <p>
-            A selection of projects where I&apos;ve worked on Shopify,
-            frontend interfaces and professional website development.
-          </p>
-        </motion.div>
+          <div className="projects-header">
+            <div>
+              <h2>
+                Selected
+                <br />
+                <em>projects.</em>
+              </h2>
 
-        <div className="projects-grid">
+              <p>
+                A few projects where I&apos;ve worked on Shopify, WordPress,
+                frontend development and responsive website experiences.
+              </p>
+            </div>
+
+            <div className="scroll-note">
+              <span>←</span>
+              Scroll to explore
+              <span>→</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          ref={projectScroller}
+          onWheel={handleWheel}
+          className="project-scroller"
+        >
+          <div className="project-spacer" />
+
           {projects.map((project, index) => (
             <motion.article
-              className="project-card"
+              className="project-slide"
               key={project.title}
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              transition={{
-                duration: 0.65,
-                delay: index * 0.1,
-              }}
-              whileHover={{
-                y: -10,
-              }}
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
             >
-              <div className="project-image">
-                <div className="project-orb" />
+              <div className="project-content">
+                <span className="project-number">
+                  0{index + 1}
+                </span>
 
-                <img src={project.image} alt={`${project.title} logo`} />
-              </div>
-
-              <div className="project-info">
-                <div className="project-topline">
-                  <span>{project.category}</span>
-                  <span>0{index + 1}</span>
-                </div>
+                <span className="project-type">
+                  {project.type}
+                </span>
 
                 <h3>{project.title}</h3>
 
                 <p>{project.description}</p>
               </div>
+
+              <div className="project-logo-area">
+                <div className="project-circle" />
+
+                <motion.img
+                  src={project.image}
+                  alt={`${project.title} logo`}
+                  animate={{
+                    y: [0, -7, 0],
+                  }}
+                  transition={{
+                    duration: 4 + index,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </div>
             </motion.article>
           ))}
+
+          <div className="project-spacer" />
         </div>
       </section>
 
       {/* EXPERIENCE */}
-      <section id="experience" className="content-section section-container">
-        <motion.div
-          className="section-heading"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={reveal}
-          transition={{ duration: 0.65 }}
-        >
-          <div className="section-eyebrow">
-            <span>05</span>
-            EXPERIENCE
-          </div>
 
+      <section
+        id="experience"
+        className="section-block section-container"
+      >
+        <div className="section-label">
+          <span>05</span>
+          EXPERIENCE
+        </div>
+
+        <div className="section-heading-row">
           <h2>
-            Work &
+            Development
             <br />
-            <span>development focus.</span>
+            <em>experience.</em>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="experience-list">
           {experience.map((item, index) => (
             <motion.div
-              className="experience-item"
+              className="experience-row"
               key={item.title}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.3,
-              }}
-              transition={{
-                duration: 0.55,
-                delay: index * 0.08,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <div className="experience-index">
+              <span className="experience-number">
                 {String(index + 1).padStart(2, "0")}
-              </div>
+              </span>
 
               <div>
-                <span className="experience-type">{item.type}</span>
+                <small>{item.category}</small>
                 <h3>{item.title}</h3>
               </div>
 
-              <p>{item.text}</p>
+              <p>{item.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* CONTACT */}
+
       <section id="contact" className="contact-section section-container">
-        <motion.div
-          className="contact-box"
-          initial={{
-            opacity: 0,
-            scale: 0.96,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.7,
-          }}
-        >
+        <div className="contact-panel">
           <div className="contact-copy">
-            <div className="section-eyebrow">
+            <div className="section-label">
               <span>06</span>
-              LET&apos;S TALK
+              CONTACT
             </div>
 
             <h2>
               Have a project
               <br />
-              <span>in mind?</span>
+              <em>in mind?</em>
             </h2>
 
             <p>
-              Tell me what you&apos;re building and what you need help with.
-              Send your project details and I&apos;ll get back to you.
+              Tell me what you need and send the project details. I&apos;ll
+              get back to you.
             </p>
 
-            <div className="contact-direct">
+            <div className="contact-links">
               <a href="mailto:musawarkahloon991@gmail.com">
-                musawarkahloon991@gmail.com
+                Email ↗
               </a>
 
               <a
@@ -641,76 +499,81 @@ export default function Portfolio() {
             <input
               type="hidden"
               name="_subject"
-              value="New Portfolio Enquiry"
+              value="New Portfolio Project"
             />
 
-            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_captcha"
+              value="false"
+            />
 
-            <div className="form-field">
-              <label htmlFor="name">Your name</label>
+            <label>
+              Name
               <input
-                id="name"
-                name="name"
                 type="text"
-                placeholder="Enter your name"
+                name="name"
+                placeholder="Your name"
                 required
               />
-            </div>
+            </label>
 
-            <div className="form-field">
-              <label htmlFor="email">Email address</label>
+            <label>
+              Email
               <input
-                id="email"
-                name="email"
                 type="email"
+                name="email"
                 placeholder="you@example.com"
                 required
               />
-            </div>
+            </label>
 
-            <div className="form-field">
-              <label htmlFor="service">What do you need?</label>
-              <select id="service" name="service" defaultValue="" required>
+            <label>
+              Service
+              <select name="service" defaultValue="">
                 <option value="" disabled>
-                  Select a service
+                  Select service
                 </option>
+
                 <option>Shopify Development</option>
+                <option>WordPress Development</option>
                 <option>Custom Liquid Section</option>
                 <option>Website Development</option>
                 <option>Website Redesign</option>
-                <option>WordPress Development</option>
                 <option>Bug Fixing</option>
               </select>
-            </div>
+            </label>
 
-            <div className="form-field">
-              <label htmlFor="message">Project details</label>
+            <label>
+              Project details
               <textarea
-                id="message"
                 name="message"
-                rows={6}
+                rows={5}
                 placeholder="Tell me about your project..."
                 required
               />
-            </div>
+            </label>
 
-            <button type="submit" className="submit-button">
-              Send Project Enquiry
+            <button type="submit">
+              Send Project
               <span>↗</span>
             </button>
           </form>
-        </motion.div>
+        </div>
       </section>
 
       <footer className="footer section-container">
-        <div>
+        <div className="footer-brand">
           <img
-            src="/musawar.github.io/mk-logo.png"
-            alt="Musawar MK logo"
+            src={`${base}/mk-logo.png`}
+            alt="Musawar Logo"
           />
-        </div>
 
-        <p>Shopify &amp; Web Developer</p>
+          <div>
+            <strong>Musawar Web</strong>
+            <span>Shopify & Web Developer</span>
+          </div>
+        </div>
 
         <a href="#home">Back to top ↑</a>
       </footer>
