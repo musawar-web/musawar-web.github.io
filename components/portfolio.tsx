@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-const base = "/musawar.github.io";
+const base = "";
 
 const skills = [
   "Shopify",
