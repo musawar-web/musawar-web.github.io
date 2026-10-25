@@ -336,17 +336,14 @@ export default function Portfolio() {
         </div>
 
         <div className="projects-title-row">
-          <div>
-            <h2>
-              Selected
-              <br />
-              <em>projects.</em>
-            </h2>
-          </div>
+          <h2>
+            Selected
+            <br />
+            <em>projects.</em>
+          </h2>
 
           <p>
-            A selection of websites I&apos;ve worked on across Shopify,
-            WordPress and frontend development.
+            A focused selection of Shopify, WordPress and frontend work.
           </p>
         </div>
 
@@ -355,27 +352,13 @@ export default function Portfolio() {
             <motion.article
               key={project.title}
               className="professional-project-card"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.55,
-                delay: index * 0.08,
-              }}
+              transition={{ duration: 0.5, delay: index * 0.07 }}
+              whileHover={{ y: -6 }}
             >
-              <div className="project-card-top">
-                <span className="project-index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-
-                <span className="project-category">
-                  {project.type}
-                </span>
-              </div>
-
               <div className="professional-logo-area">
-                <div className="project-background-circle" />
-
                 <img
                   src={project.image}
                   alt={`${project.title} logo`}
@@ -383,14 +366,9 @@ export default function Portfolio() {
               </div>
 
               <div className="professional-project-info">
+                <span className="project-category">{project.type}</span>
                 <h3>{project.title}</h3>
-
                 <p>{project.description}</p>
-
-                <div className="project-view">
-                  <span>Featured Project</span>
-                  <b>↗</b>
-                </div>
               </div>
             </motion.article>
           ))}
@@ -411,33 +389,44 @@ export default function Portfolio() {
             <br />
             <em>worked with.</em>
           </h2>
-
-          <p className="clients-description">
-            A selection of brands and websites I&apos;ve worked with across
-            Shopify, WordPress and frontend development.
-          </p>
         </div>
 
         <div className="clients-marquee">
           <div className="clients-marquee-track">
-            {[
-              ...clientLogos,
-              ...clientLogos,
-              ...clientLogos,
-              ...clientLogos,
-            ].map((client, index) => (
-              <div
-                className="client-logo-card"
-                key={`${client.name}-${index}`}
-              >
-                <img
-                  src={client.image}
-                  alt={`${client.name} logo`}
-                />
+            <div className="clients-marquee-group">
+              {[...clientLogos, ...clientLogos, ...clientLogos].map(
+                (client, index) => (
+                  <div
+                    className="client-logo-item"
+                    key={`a-${client.name}-${index}`}
+                  >
+                    <img
+                      src={client.image}
+                      alt={`${client.name} logo`}
+                    />
+                  </div>
+                )
+              )}
+            </div>
 
-                <span>{client.name}</span>
-              </div>
-            ))}
+            <div
+              className="clients-marquee-group"
+              aria-hidden="true"
+            >
+              {[...clientLogos, ...clientLogos, ...clientLogos].map(
+                (client, index) => (
+                  <div
+                    className="client-logo-item"
+                    key={`b-${client.name}-${index}`}
+                  >
+                    <img
+                      src={client.image}
+                      alt=""
+                    />
+                  </div>
+                )
+              )}
+            </div>
           </div>
         </div>
       </section>
