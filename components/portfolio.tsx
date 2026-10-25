@@ -11,75 +11,6 @@ export default function Portfolio() {
         color: "white",
       }}
     >
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          background: "rgba(8,12,9,0.86)",
-          backdropFilter: "blur(18px)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            minHeight: "78px",
-            padding: "0 24px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "24px",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <img
-              src="/musawar.github.io/mk-logo.png"
-              alt="Musawar logo"
-              style={{
-                height: "44px",
-                width: "auto",
-              }}
-            />
-          </Link>
-
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "26px",
-              flexWrap: "wrap",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Link href="/about">About</Link>
-            <Link href="/skills">Skills</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/experience">Experience</Link>
-
-            <Link
-              href="/contact"
-              style={{
-                padding: "12px 18px",
-                borderRadius: "999px",
-                background: "#bbf244",
-                color: "#080c09",
-                fontWeight: 800,
-              }}
-            >
-              Let&apos;s Talk
-            </Link>
-          </nav>
-        </div>
-      </header>
-
       <section
         style={{
           maxWidth: "1200px",
@@ -155,6 +86,7 @@ export default function Portfolio() {
                 fontWeight: 800,
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               View My Work
@@ -169,6 +101,8 @@ export default function Portfolio() {
                 border: "1px solid rgba(255,255,255,0.12)",
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
+                color: "white",
               }}
             >
               Contact Me
@@ -182,6 +116,7 @@ export default function Portfolio() {
             border: "1px solid rgba(255,255,255,0.1)",
             background: "rgba(255,255,255,0.03)",
             padding: "18px",
+            overflow: "hidden",
           }}
         >
           <img
@@ -189,10 +124,216 @@ export default function Portfolio() {
             alt="Musawar"
             style={{
               width: "100%",
+              display: "block",
               borderRadius: "22px",
               objectFit: "cover",
             }}
           />
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "40px 24px 100px",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "16px",
+          }}
+        >
+          <div
+            style={{
+              padding: "24px",
+              borderRadius: "20px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.025)",
+            }}
+          >
+            <div
+              style={{
+                color: "#bbf244",
+                fontSize: "13px",
+                fontWeight: 700,
+                marginBottom: "10px",
+              }}
+            >
+              SHOPIFY
+            </div>
+
+            <h3
+              style={{
+                fontSize: "21px",
+                marginBottom: "8px",
+              }}
+            >
+              Custom Development
+            </h3>
+
+            <p
+              style={{
+                color: "#9ca3af",
+                lineHeight: 1.7,
+                fontSize: "14px",
+              }}
+            >
+              Custom sections, product layouts, collection pages and Shopify
+              front-end development.
+            </p>
+          </div>
+
+          <div
+            style={{
+              padding: "24px",
+              borderRadius: "20px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.025)",
+            }}
+          >
+            <div
+              style={{
+                color: "#bbf244",
+                fontSize: "13px",
+                fontWeight: 700,
+                marginBottom: "10px",
+              }}
+            >
+              FRONTEND
+            </div>
+
+            <h3
+              style={{
+                fontSize: "21px",
+                marginBottom: "8px",
+              }}
+            >
+              Responsive Interfaces
+            </h3>
+
+            <p
+              style={{
+                color: "#9ca3af",
+                lineHeight: 1.7,
+                fontSize: "14px",
+              }}
+            >
+              Modern responsive websites built for desktop, tablet and mobile.
+            </p>
+          </div>
+
+          <div
+            style={{
+              padding: "24px",
+              borderRadius: "20px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,255,255,0.025)",
+            }}
+          >
+            <div
+              style={{
+                color: "#bbf244",
+                fontSize: "13px",
+                fontWeight: 700,
+                marginBottom: "10px",
+              }}
+            >
+              E-COMMERCE
+            </div>
+
+            <h3
+              style={{
+                fontSize: "21px",
+                marginBottom: "8px",
+              }}
+            >
+              Better Shopping Experiences
+            </h3>
+
+            <p
+              style={{
+                color: "#9ca3af",
+                lineHeight: 1.7,
+                fontSize: "14px",
+              }}
+            >
+              E-commerce interfaces focused on clean design, usability and
+              customer experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "30px 24px 110px",
+        }}
+      >
+        <div
+          style={{
+            padding: "42px",
+            borderRadius: "28px",
+            border: "1px solid rgba(187,242,68,0.18)",
+            background:
+              "linear-gradient(135deg, rgba(187,242,68,0.07), rgba(255,255,255,0.02))",
+          }}
+        >
+          <p
+            style={{
+              color: "#bbf244",
+              fontWeight: 700,
+              marginBottom: "12px",
+            }}
+          >
+            HAVE A PROJECT?
+          </p>
+
+          <h2
+            style={{
+              fontSize: "clamp(34px, 5vw, 58px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+              marginBottom: "18px",
+              maxWidth: "800px",
+            }}
+          >
+            Let&apos;s build something professional together.
+          </h2>
+
+          <p
+            style={{
+              maxWidth: "650px",
+              color: "#9ca3af",
+              fontSize: "17px",
+              lineHeight: 1.7,
+              marginBottom: "26px",
+            }}
+          >
+            If you need Shopify development, a website redesign or a modern
+            responsive interface, send me your project details.
+          </p>
+
+          <Link
+            href="/contact"
+            style={{
+              minHeight: "52px",
+              padding: "0 22px",
+              borderRadius: "14px",
+              background: "#bbf244",
+              color: "#080c09",
+              fontWeight: 800,
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            Let&apos;s Talk
+          </Link>
         </div>
       </section>
     </main>
