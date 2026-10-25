@@ -1633,3 +1633,74 @@ textarea {
     transform: translateY(0);
   }
 }
+/* PROJECT CARDS FINAL */
+
+.professional-project-card {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 22px;
+  background: #0b0e14;
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.professional-project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(126,160,255,.38);
+  box-shadow:
+    0 22px 55px rgba(0,0,0,.32),
+    0 0 30px rgba(85,119,255,.06);
+}
+
+.professional-logo-area {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: #11151d;
+  border-bottom: 1px solid var(--border);
+}
+
+.professional-logo-area::before {
+  display: none !important;
+}
+
+.professional-logo-area img {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: top center;
+  animation: none !important;
+  transition: transform .6s ease;
+}
+
+.professional-project-card:hover
+.professional-logo-area img {
+  transform: scale(1.035);
+}
+
+.professional-project-info {
+  padding: 27px 28px 30px;
+}
+
+.project-category {
+  margin-bottom: 11px;
+}
+
+.professional-project-info h3 {
+  margin-bottom: 11px;
+}
+
+@media (max-width: 760px) {
+  .professional-logo-area {
+    height: 260px;
+  }
+}
