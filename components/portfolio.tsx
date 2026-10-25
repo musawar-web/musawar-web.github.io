@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useRef } from "react";
 
 const base = "/musawar.github.io";
 
@@ -73,6 +72,21 @@ const projects = [
   },
 ];
 
+const clientLogos = [
+  {
+    name: "Saltite",
+    image: `${base}/projects/saltite.png`,
+  },
+  {
+    name: "Skylite",
+    image: `${base}/projects/skylite.png`,
+  },
+  {
+    name: "NutriSalt",
+    image: `${base}/projects/nutrisalt.png`,
+  },
+];
+
 const experience = [
   {
     title: "Shopify Developer",
@@ -101,14 +115,6 @@ const experience = [
 ];
 
 export default function Portfolio() {
-  const projectScroller = useRef<HTMLDivElement>(null);
-
-  const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    if (!projectScroller.current) return;
-
-    projectScroller.current.scrollLeft += event.deltaY;
-  };
-
   return (
     <main className="portfolio">
       <div className="background-grid" />
@@ -323,84 +329,116 @@ export default function Portfolio() {
 
       {/* PROJECTS */}
 
-      <section id="projects" className="section-block projects-section">
-        <div className="section-container">
-          <div className="section-label">
-            <span>04</span>
-            PROJECTS
-          </div>
-
-          <div className="projects-header">
-            <div>
-              <h2>
-                Selected
-                <br />
-                <em>projects.</em>
-              </h2>
-
-              <p>
-                A few projects where I&apos;ve worked on Shopify, WordPress,
-                frontend development and responsive website experiences.
-              </p>
-            </div>
-
-            <div className="scroll-note">
-              <span>←</span>
-              Scroll to explore
-              <span>→</span>
-            </div>
-          </div>
+      <section id="projects" className="section-block section-container">
+        <div className="section-label">
+          <span>04</span>
+          PROJECTS
         </div>
 
-        <div
-          ref={projectScroller}
-          onWheel={handleWheel}
-          className="project-scroller"
-        >
-          <div className="project-spacer" />
+        <div className="projects-title-row">
+          <div>
+            <h2>
+              Selected
+              <br />
+              <em>projects.</em>
+            </h2>
+          </div>
 
+          <p>
+            A selection of websites I&apos;ve worked on across Shopify,
+            WordPress and frontend development.
+          </p>
+        </div>
+
+        <div className="professional-projects">
           {projects.map((project, index) => (
             <motion.article
-              className="project-slide"
               key={project.title}
-              initial={{ opacity: 0, scale: 0.97 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              className="professional-project-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.55,
+                delay: index * 0.08,
+              }}
             >
-              <div className="project-content">
-                <span className="project-number">
-                  0{index + 1}
+              <div className="project-card-top">
+                <span className="project-index">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="project-type">
+                <span className="project-category">
                   {project.type}
                 </span>
+              </div>
 
+              <div className="professional-logo-area">
+                <div className="project-background-circle" />
+
+                <img
+                  src={project.image}
+                  alt={`${project.title} logo`}
+                />
+              </div>
+
+              <div className="professional-project-info">
                 <h3>{project.title}</h3>
 
                 <p>{project.description}</p>
-              </div>
 
-              <div className="project-logo-area">
-                <div className="project-circle" />
-
-                <motion.img
-                  src={project.image}
-                  alt={`${project.title} logo`}
-                  animate={{
-                    y: [0, -7, 0],
-                  }}
-                  transition={{
-                    duration: 4 + index,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
+                <div className="project-view">
+                  <span>Featured Project</span>
+                  <b>↗</b>
+                </div>
               </div>
             </motion.article>
           ))}
+        </div>
+      </section>
 
-          <div className="project-spacer" />
+      {/* MOVING CLIENT LOGOS */}
+
+      <section className="clients-section">
+        <div className="section-container clients-heading">
+          <div className="section-label">
+            <span>05</span>
+            SELECTED BRANDS
+          </div>
+
+          <h2>
+            Brands I&apos;ve
+            <br />
+            <em>worked with.</em>
+          </h2>
+
+          <p className="clients-description">
+            A selection of brands and websites I&apos;ve worked with across
+            Shopify, WordPress and frontend development.
+          </p>
+        </div>
+
+        <div className="clients-marquee">
+          <div className="clients-marquee-track">
+            {[
+              ...clientLogos,
+              ...clientLogos,
+              ...clientLogos,
+              ...clientLogos,
+            ].map((client, index) => (
+              <div
+                className="client-logo-card"
+                key={`${client.name}-${index}`}
+              >
+                <img
+                  src={client.image}
+                  alt={`${client.name} logo`}
+                />
+
+                <span>{client.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -411,7 +449,7 @@ export default function Portfolio() {
         className="section-block section-container"
       >
         <div className="section-label">
-          <span>05</span>
+          <span>06</span>
           EXPERIENCE
         </div>
 
@@ -449,11 +487,14 @@ export default function Portfolio() {
 
       {/* CONTACT */}
 
-      <section id="contact" className="contact-section section-container">
+      <section
+        id="contact"
+        className="contact-section section-container"
+      >
         <div className="contact-panel">
           <div className="contact-copy">
             <div className="section-label">
-              <span>06</span>
+              <span>07</span>
               CONTACT
             </div>
 
@@ -562,20 +603,69 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="footer section-container">
-        <div className="footer-brand">
-          <img
-            src={`${base}/mk-logo.png`}
-            alt="Musawar Logo"
-          />
+      {/* FOOTER */}
 
-          <div>
-            <strong>Musawar Web</strong>
-            <span>Shopify & Web Developer</span>
-          </div>
+      <footer className="footer section-container">
+        <div className="footer-socials">
+          <a
+            href="https://www.instagram.com/musawar__kahloon?exln=ejdpeWxwd2hldjFm&utm_source=qr"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            className="footer-social-link"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="5"
+              />
+
+              <circle
+                cx="12"
+                cy="12"
+                r="4"
+              />
+
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                className="social-dot"
+              />
+            </svg>
+
+            <span>Instagram</span>
+          </a>
+
+          <a
+            href="https://wa.me/92332728620"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+            className="footer-social-link"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M12 3a8.5 8.5 0 0 0-7.3 12.9L3.5 20.5l4.7-1.2A8.5 8.5 0 1 0 12 3Z" />
+
+              <path d="M8.4 8.1c.2-.5.5-.5.8-.5h.5c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.6.8c-.2.2-.1.4 0 .6.8 1.4 1.9 2.4 3.4 3 .3.1.5.1.7-.1l.9-1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .5-.2 1.5-.7 2-.5.5-1.4.8-2.2.8-1.2 0-3.1-.6-5.2-2.5-1.6-1.5-2.8-3.3-3.1-4.6-.3-1.2 0-2 .5-2.7Z" />
+            </svg>
+
+            <span>WhatsApp</span>
+          </a>
         </div>
 
-        <a href="#home">Back to top ↑</a>
+        <div className="footer-copyright">
+          © {new Date().getFullYear()} Musawar Web. All rights reserved.
+        </div>
       </footer>
     </main>
   );
